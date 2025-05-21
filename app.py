@@ -71,7 +71,7 @@ provider = st.sidebar.selectbox("LLM Provider", ["Groq", "Gemini", "OpenAI"])
 model_options = {
     "Groq": ["qwen-qwq-32b", "mistral-saba-24b", "llama-3.3-70b-versatile"],
     "Gemini": ["gemini-2.0-flash-001", "gemini-1.5-pro", "gemini-2.0-flash", "gemini-2.5-pro-preview"],
-    "OpenAI": ["gpt-4-32k", "gpt-4", "gpt-3.5-turbo", "gpt-3.5-turbo-16k"]
+    "OpenAI": ["gpt-4", "gpt-3.5-turbo", "gpt-3.5-turbo-16k"]
 }
 
 model_name = st.sidebar.selectbox("Model", model_options[provider])
