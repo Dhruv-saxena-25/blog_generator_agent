@@ -6,6 +6,63 @@ from src.llm.llms import get_llm
 from src.graph.builder import init_graph
 
 
+# Custom CSS for better styling
+st.markdown("""
+    <style>
+
+        /* Increase font size of the input field */
+        .stTextInput input {
+            font-size: 20px !important;
+            padding: 12px !important;
+        }
+
+        /* Page background and font */
+        html, body, [class*="css"]  {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Input box styling */
+        .stTextInput > div > div > input {
+            font-size: 18px !important;
+            padding: 10px;
+        }
+
+        /* Title styling */
+        .main-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1f4e79;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .section-header {
+            font-size: 20px;
+            margin-top: 2rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .stButton button {
+            background-color: #1f4e79;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        .stButton button:hover {
+            background-color: #163b5b;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # ─── Sidebar inputs 
 st.sidebar.header("🤖 LLM Configuration")   
 
@@ -124,7 +181,7 @@ Effortlessly generate, refine, and perfect your blog content using advanced lang
 """)
 
 # Blog input UI
-topic = st.text_input("Enter your blog topic:", placeholder="Generative AI in Healthcare")
+topic = st.text_input("✍️ Enter a topic you'd like to write about:", placeholder="Generative AI in Healthcare")
 generate_btn = st.button("Generate Blog Post")
 
 if generate_btn:
