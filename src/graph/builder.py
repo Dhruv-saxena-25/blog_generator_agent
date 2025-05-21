@@ -10,19 +10,12 @@ from src.tools.route import route_based_on_verdict
 
 def init_graph(llm):
     builder = StateGraph(BlogState)
-    # builder.add_node("title_generator", generate_title) ## Generate Title
+    builder.add_node("title_generator", lambda state: generate_title(state, llm)) ## Generate Title
     builder.add_node("search_web", search_web) ## Search Web using Tavily based in the topic
-    # builder.add_node("content_generator", generate_content) ## Generate Content using the output of title_generator and search_web
-    # builder.add_node("content_reviewer", review_content) ## Review Content and generate feedback
-    # builder.add_node("quality_check", evaluate_content) ## Validate the content based on feedback and generate verdict
-
-    
-    builder.add_node("title_generator", lambda state: generate_title(state, llm))
-    # builder.add_node("search_web", search_web)  
-    builder.add_node("content_generator", lambda state: generate_content(state, llm))
-    builder.add_node("content_reviewer", lambda state: review_content(state, llm))
-    builder.add_node("quality_check", lambda state: evaluate_content(state, llm))
-    
+    builder.add_node("content_generator", lambda state: generate_content(state, llm)) ## Generate Content using the output of title_generator and search_web
+    builder.add_node("content_reviewer", lambda state: review_content(state, llm)) ## Review Content and generate feedback
+    builder.add_node("quality_check", lambda state: evaluate_content(state, llm)) ## Validate the content based on feedback and generate verdict
+  
     builder.add_edge(START, "title_generator")
     builder.add_edge(START, "search_web")
     builder.add_edge("title_generator", "content_generator")
