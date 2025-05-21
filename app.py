@@ -10,6 +10,19 @@ from src.graph.builder import init_graph
 st.markdown("""
     <style>
 
+        /* pin the sidebar container to the viewport */
+        [data-testid="stSidebar"] {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        /* push the main content over to avoid overlap */
+        .css-1d391kg.e1g8pov61 {
+            margin-left: 20rem;
+        }
+        
         /* Increase font size of the input field */
         .stTextInput input {
             font-size: 20px !important;
